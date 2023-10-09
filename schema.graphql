@@ -1,0 +1,59 @@
+type Block @entity {
+    id: ID!
+    number: Int! @index
+    timestamp: DateTime! @index
+}
+
+type Transaction @entity {
+    id: ID!
+    blockNumber: Int @index
+    blockTimestamp: DateTime! @index
+    hash: String! @index
+    to: String @index
+    from: String @index
+    status: Int @index
+}
+
+type ContractEventTrade @entity {
+    id: ID!
+    blockNumber: Int! @index
+    blockTimestamp: DateTime! @index
+    transactionHash: String! @index
+    contract: String! @index
+    eventName: String! @index
+    trader: String!
+    subject: String!
+    isBuy: Boolean!
+    shareAmount: BigInt!
+    ethAmount: BigInt!
+    protocolEthAmount: BigInt!
+    subjectEthAmount: BigInt!
+    supply: BigInt!
+}
+
+type ContractFunctionBuyShares @entity {
+    id: ID!
+    blockNumber: Int! @index
+    blockTimestamp: DateTime! @index
+    transactionHash: String! @index
+    contract: String! @index
+    functionName: String! @index
+    functionValue: BigInt
+    functionSuccess: Boolean @index
+    sharesSubject: String!
+    amount: BigInt!
+}
+
+type ContractFunctionSellShares @entity {
+    id: ID!
+    blockNumber: Int! @index
+    blockTimestamp: DateTime! @index
+    transactionHash: String! @index
+    contract: String! @index
+    functionName: String! @index
+    functionValue: BigInt
+    functionSuccess: Boolean @index
+    sharesSubject: String!
+    amount: BigInt!
+}
+
